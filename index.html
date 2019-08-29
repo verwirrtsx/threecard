@@ -83,11 +83,26 @@
 			
 		<div id="mycard" class="cav">
 		
-		<!-- <canvas id="all" width="585" height="150" class="cav"></canvas>	 -->
+		<canvas id="all" width="585" height="150" class="cav"></canvas>	
 		</div>
 		</div>
 	</body>
 </html>
+<script src="js/lib.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var Labels = Class.create();
+	$.extend(Labels.prototype, {
+	    initialize: function (cxt) {
+	        this.cxt = cxt;
+	    },
+	    setText: function (text, postion) {
+	        this.cxt.font = 'bold 20px serif';
+	        this.cxt.fillStyle = '#000000';
+	        this.cxt.textAlign = 'center';
+	        this.cxt.fillText(text, postion.x, postion.y);
+	    }
+	});
+</script>
 <!-- <script type="text/javascript">
 	
 	var con =document.getElementById('all');
@@ -100,48 +115,5 @@
 		console.log(event)
 	})
 	
-</script> -->
-<script type="text/javascript">
-	var cards =document.getElementById('mycard');
-	for(let a=1;a<17;a++){
-	var img='pic/'+a+'.jpg';
-	cards.innerHTML +='<img src='+img+'  id="a'+a+'" class="card"  onclick="showit('+a+')">';
-	// console.log(img);
-	}
-
-	var cardlist=[];
-	function showit(id){
-	cid = 'a'+id;
-	if($('#'+cid).hasClass("card")){
-		$('#'+cid).removeClass("card");
-		$('#'+cid).addClass("card1");
-		cardlist.push(cid);
-	}else{
-		$('#'+cid).removeClass("card1");
-		$('#'+cid).addClass("card");
-	}
-	
-	}
-	
-	function send(){	
-		console.log(cardlist)
-		var parent=document.getElementById("mycard");
-		for(let i=0;i<cardlist.length;i++){
-			let child=document.getElementById(cardlist[i]);
-			parent.removeChild(child);
-			//aa.shift();
-		}
-		showintable(cardlist);
-		cardlist = [];	
-	}
-	
-	function showintable(list){
-		console.log(list);
-		let img='pic/'+a+'.jpg';
-		var timg = document.getElementById('table');
-		for(let b=0;b<list.length;b++){
-			timg.innerHTML +='<img src='+img+'  id="'+list[b]+'" class="card">';
-		}
-	}
-	
 </script>
+ -->
